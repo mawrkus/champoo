@@ -51,7 +51,7 @@ export default class LazyLoader {
         const conditionsP = conditionsData[conditionName]
           .map((data) => {
             const { element } = data;
-            const validationError = this._validateCondition({ conditionName, element });
+            const validationError = this._validateCondition({ conditionName });
 
             if (validationError) {
               this._setElementStatus({ element, status: 'error', error: validationError });
