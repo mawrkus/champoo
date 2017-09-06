@@ -41,8 +41,8 @@ describe('LazyLoader', () => {
 
   describe('#init()', () => {
     it('should initialize all the conditions referenced in the DOM', (done) => {
-      const conditionA = { init: jest.fn(({ element }) => Promise.resolve(element)) };
-      const conditionB = { init: jest.fn(({ element }) => Promise.resolve(element)) };
+      const conditionA = { init: jest.fn(() => Promise.resolve()) };
+      const conditionB = { init: jest.fn(() => Promise.resolve()) };
 
       const lazyLoader = new LazyLoader({
         selectors: {
@@ -79,7 +79,7 @@ describe('LazyLoader', () => {
     });
 
     it('should trigger the proper loader each time a condition resolves', (done) => {
-      const conditionA = { init: jest.fn(({ element }) => Promise.resolve(element)) };
+      const conditionA = { init: jest.fn(() => Promise.resolve()) };
       const loader1 = { load: jest.fn(({ element }) => Promise.resolve(`loaded #${element.id}`)) };
       const loader2 = { load: jest.fn(({ element }) => Promise.resolve(`loaded #${element.id}`)) };
 

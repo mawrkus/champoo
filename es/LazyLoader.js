@@ -171,7 +171,7 @@ export default class LazyLoader {
    */
   _setElementStatus({ element, status, error }) {
     element.setAttribute(this._attributes.status, status);
-    
+
     if (error) {
       element.setAttribute(this._attributes.error, error.toString());
     }
