@@ -17,8 +17,7 @@
     "test": "jest",
     "prebuild": "yarn run test",
     "build": "rm -rf lib && webpack",
-    "postbuild": "yarn run uglify",
-    "uglify": "uglifyjs lib/LazyLoader.js --compress --mangle -o lib/LazyLoader.min.js",
+    "postbuild": "uglifyjs lib/LazyLoader.js --compress --mangle -o lib/LazyLoader.min.js",
     "server:demo": "webpack-dev-server --open --port 3000 --config webpack.config.demo.js",
     "prebuild:demo": "yarn run lint",
     "build:demo": "webpack --progress --colors --display-modules --display-chunks --config webpack.config.demo.js"
