@@ -1,8 +1,13 @@
 {
-  "name": "lazy-loader",
+  "name": "champoo",
   "version": "0.1.0",
   "description": "Lazy loading pretty much everything!",
   "main": "index.js",
+  "homepage": "https://github.com/mawrkus/champoo.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mawrkus/champoo.git"
+  },
   "files": [
     "es",
     "lib",
@@ -10,6 +15,13 @@
   ],
   "author": "mawrkus <web@sparring-partner.be>",
   "license": "MIT",
+  "keywords": [
+    "lazy loader",
+    "lazy loading",
+    "lazy modules",
+    "lazy",
+    "conditioner"
+  ],
   "scripts": {
     "tdd": "jest --watch --verbose",
     "lint": "eslint es demo/index.js",
@@ -17,7 +29,7 @@
     "test": "jest",
     "prebuild": "yarn run test",
     "build": "rm -rf lib && webpack",
-    "postbuild": "uglifyjs lib/LazyLoader.js --compress --mangle -o lib/LazyLoader.min.js",
+    "postbuild": "uglifyjs lib/Champoo.js --compress --mangle -o lib/Champoo.min.js",
     "server:demo": "webpack-dev-server --open --port 3000 --config webpack.config.demo.js",
     "prebuild:demo": "yarn run lint",
     "build:demo": "webpack --progress --colors --display-modules --display-chunks --config webpack.config.demo.js"

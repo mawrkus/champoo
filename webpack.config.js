@@ -1,11 +1,11 @@
 const path = require('path');
 
 const config = {
-  entry: './es/LazyLoader.js',
+  entry: './es/Champoo.js',
   output: {
-    filename: 'LazyLoader.js',
+    filename: 'Champoo.js',
     path: path.resolve(__dirname, 'lib'),
-    library: 'LazyLoader',
+    library: 'Champoo',
     libraryTarget: 'umd'
   },
   module: {

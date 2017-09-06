@@ -1,5 +1,5 @@
-import LazyLoader from '../es/LazyLoader';
+import Champoo from '../es/Champoo';
 
-const lazyLoader = new LazyLoader();
+const champoo = new Champoo();
 
-lazyLoader.init();
+champoo.init();

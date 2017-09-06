@@ -1,1 +1,1 @@
-module.exports = require('./lib/LazyLoader').default;
+module.exports = require('./lib/Champoo').default;
