@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "plugins": [
+    "jest"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    // Tests
+    "jest/no-disabled-tests": "error",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "warn",
+
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+
+    // Best practices
+    "valid-jsdoc": ["warn", {
+      "requireReturn": false,
+      "requireParamDescription": false,
+      "requireReturnDescription": false,
+      "prefer": {
+        "returns": "return",
+        "params": "param"
+      }
+    }],
+    "complexity": ["warn", 7], // Warn about excessive complexity
+    "no-param-reassign": ["error", { "props": false }], // To enable request.params.something = ...;
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }], // To enable this._p = 'value';
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }], // allow i++ in loops
+    "class-methods-use-this": "off",
+
+    // Style
+    "arrow-body-style": "off", // Allow arrow functions with only a return statement
+    "comma-dangle": ["warn", "never"], // Disallow trailing comma in the last element of a list
+    "consistent-return": "off", // Allow if (error) { return ... } and no final return
+    "object-curly-newline": "off",
+    "padded-blocks": "off", // Allow spaces at the beginning of blocks
+    "quote-props": ["error", "consistent"] // All quotes or no quotes in a single object
+  }
+}
