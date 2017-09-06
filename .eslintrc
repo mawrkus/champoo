@@ -30,14 +30,15 @@
     "class-methods-use-this": "off",
     "complexity": ["warn", 4],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }], // To import devDependencies
+    "no-param-reassign": ["error", { "props": false }], // To be able to reassign a property of a parameter
     "no-underscore-dangle": ["error", { "allowAfterThis": true }], // To enable this._p = 'value';
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }], // allow i++ in loops
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }], // Allow i++ in loops
 
     // Style
     "arrow-body-style": "off", // Allow arrow functions with only a return statement
     "comma-dangle": ["warn", "never"], // Disallow trailing comma in the last element of a list
     "consistent-return": "off", // Allow if (error) { return ... } and no final return
-    "object-curly-newline": ["error", { "consistent": true }],
+    "object-curly-newline": ["error", { "consistent": true }], // To enforce consistent line breaks inside braces of object literals or destructuring assignments
     "padded-blocks": "off", // Allow spaces at the beginning of blocks
     "quote-props": ["error", "consistent"] // All quotes or no quotes in a single object
   }
