@@ -1,6 +1,6 @@
 /**
  * Champoo loads pretty much loads everything.
-  * Its design is based on the separation of:
+ * Its design is based on the separation of:
  *
  * 1. Conditioners: responsibles for resolving a promise when a DOM element satisfies a given
  * condition (e.g.: becoming visible in the DOM).
@@ -89,6 +89,7 @@ export default class Champoo {
    */
   _gatherConditionersDataFromDom() {
     const lazyElements = document.querySelectorAll(this._selectors.lazy);
+    const paramsRegex = /\s*([^(]+)(\((.+)\))?\s*/; // e.g.: "conditioner-name(p1,p2,p3)"
 
     const conditionersDataFromDom = Array.from(lazyElements)
       .reduce((acc, element) => {
@@ -96,7 +97,9 @@ export default class Champoo {
           .reduce((updatedData, type) => {
             const attributeValue = element.getAttribute(this._attributes[type]) ||
               this._defaults[type];
-            const [name, params] = attributeValue.split(':');
+
+            const [, name, , rawParams] = attributeValue.match(paramsRegex) || [];
+            const params = rawParams ? rawParams.split(',').map(p => p.trim()) : [];
 
             updatedData[type] = { name, params };
 
@@ -133,7 +136,7 @@ export default class Champoo {
       })
       .then(() => {
         this._setElementStatus({ element, status: 'loading' });
-        return this._loaders[loader.name].load({ element });
+        return this._loaders[loader.name].load({ element, params: loader.params });
       })
       .then((loaderResponse) => {
         this._setElementStatus({ element, status: 'loaded' });

@@ -19,13 +19,46 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 ## Usage
 
 ```html
+<img data-lazy data-lazy-conditioner="timeout(1500)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)" />
+
+<img data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(src,https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
 ```
 
 ```js
-import Champoo from 'champoo/es';
+import Champoo from 'champoo';
+import { UrlLoader } from 'champoo/loaders';
+import { TimeoutConditioner, ViewportConditioner } from 'champoo/conditioners';
+
+const champoo = new Champoo({
+  conditioners: {
+    timeout: new TimeoutConditioner(),
+    viewport: new ViewportConditioner()
+  },
+  loaders: {
+    url: new UrlLoader()
+  }
+});
+
+champoo.init();
 ```
 
 See the `demo` folder.
+
+### Demo
+
+```bash
+yarn run demo:server
+npm run demo:server
+```
+
+or
+
+```bash
+yarn run build:demo
+npm run build:demo
+```
+
+then open `demo/index.html` in a browser.
 
 ## Contribute
 

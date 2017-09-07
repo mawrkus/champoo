@@ -28,7 +28,7 @@
 
     // Best practices
     "class-methods-use-this": "off",
-    "complexity": ["warn", 4],
+    "complexity": ["warn", 6],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }], // To import devDependencies
     "no-param-reassign": ["error", { "props": false }], // To be able to reassign a property of a parameter
     "no-underscore-dangle": ["error", { "allowAfterThis": true }], // To enable this._p = 'value';
