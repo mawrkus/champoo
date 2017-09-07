@@ -26,8 +26,8 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 
 ```js
 import Champoo from 'champoo';
-import { UrlLoader } from 'champoo/loaders';
 import { TimeoutConditioner, ViewportConditioner } from 'champoo/conditioners';
+import { UrlLoader } from 'champoo/loaders';
 
 const champoo = new Champoo({
   conditioners: {
@@ -42,8 +42,6 @@ const champoo = new Champoo({
 champoo.init();
 ```
 
-See the `demo` folder.
-
 ### Demo
 
 ```bash
@@ -51,7 +49,7 @@ yarn run demo:server
 npm run demo:server
 ```
 
-or
+to launch automatically the demo in a browser, or:
 
 ```bash
 yarn run build:demo
@@ -65,6 +63,6 @@ then open `demo/index.html` in a browser.
 1. Fork it: `git clone https://github.com/mawrkus/champoo.git`
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
 3. Commit your changes: `git commit -am 'Added some feature'`
-4. Check the build: `yarn run build`
+4. Check the build: `yarn run build` (or `npm run build`)
 4. Push to the branch: `git push origin feature/my-new-feature`
 5. Submit a pull request :D
