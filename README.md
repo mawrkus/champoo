@@ -9,6 +9,9 @@ By separating conditioners & loaders, it gives you the flexibility to easily loa
 
 ```bash
 yarn add champoo
+```
+or
+```bash
 npm install champoo
 ```
 
@@ -45,14 +48,15 @@ champoo.init();
 ### Demo
 
 ```bash
-yarn run demo:server
+git clone https://github.com/mawrkus/champoo.git
+cd champoo
+npm install
 npm run demo:server
 ```
 
 to launch automatically the demo in a browser, or:
 
 ```bash
-yarn run build:demo
 npm run build:demo
 ```
 
