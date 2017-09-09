@@ -1,4 +1,5 @@
 # Champoo
+[![npm](https://img.shields.io/npm/l/champoo.svg)](https://www.npmjs.org/package/champoo)
 
 Champoo is a lazy loader library.
 By separating conditioners & loaders, it gives you the flexibility to easily load pretty much everything, the *lazy way*... It is extensible & has a small footprint.
