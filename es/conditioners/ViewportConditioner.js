@@ -24,13 +24,11 @@ export default class ViewportConditioner {
   check({ element, params }) {
     const [distance = this._defaultDistance] = params;
 
-    this._intervalId = window.setInterval(() => {
-      this._elements = this._tryToloadElements();
-
-      if (!this._elements) {
-        window.clearInterval(this._intervalId);
-      }
-    }, this._intervalDelay);
+    if (!this._intervalId) {
+      this._intervalId = window.setInterval(() => {
+        this._elements = this._tryToloadElements();
+      }, this._intervalDelay);
+    }
 
     return new Promise((resolve) => {
       this._elements.push({
