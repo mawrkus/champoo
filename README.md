@@ -27,6 +27,8 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 <img data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(src,https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
 
 <iframe data-lazy data-lazy-conditioner="viewport(400)" data-lazy-loader="url(https://www.google.com/logos/2010/pacman10-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0" />
+
+<link rel="stylesheet" data-lazy data-lazy-conditioner="timeout(3000)" data-lazy-loader="url(href,https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css)">
 ```
 
 ```js
