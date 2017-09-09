@@ -1,3 +1,5 @@
+const REGEX_PARAMS = /\s*([^(]+)(\((.+)\))?\s*/; // e.g.: "conditioner-name(p1,p2,p3)"
+
 /**
  * Champoo loads pretty much loads everything.
  * Its design is based on the separation of:
@@ -49,25 +51,16 @@ export default class Champoo {
   }
 
   /**
+   * @param {string} [container=document]
    * @return {Promise.<Array>}
    */
-  init() {
-    const conditionersData = this._gatherConditionersDataFromDom();
+  init({ container = document } = {}) {
+    const conditionersData = this._gatherConditionersDataFromDom({ container });
 
     const initsP = Object.keys(conditionersData)
       .map((conditionerName) => {
         const conditionersP = conditionersData[conditionerName]
-          .map((data) => {
-            const { element, conditioner } = data;
-            const validationError = this._validateConditioner({ conditioner });
-
-            if (validationError) {
-              this._setElementStatus({ element, status: 'error', error: validationError });
-              return Promise.resolve({ element, error: validationError });
-            }
-
-            return this._initLazyLoad(data);
-          });
+          .map(data => this._initLazyLoad(data));
 
         return Promise.all(conditionersP)
           .then(resolutions => ({ conditioner: conditionerName, resolutions }));
@@ -77,6 +70,7 @@ export default class Champoo {
   }
 
   /**
+   * @param {HtmlElement} container
    * @return {Object}
    * {
    *   conditionerName: [{
@@ -87,18 +81,19 @@ export default class Champoo {
    *   ...
    * }
    */
-  _gatherConditionersDataFromDom() {
-    const lazyElements = document.querySelectorAll(this._selectors.lazy);
-    const paramsRegex = /\s*([^(]+)(\((.+)\))?\s*/; // e.g.: "conditioner-name(p1,p2,p3)"
+  _gatherConditionersDataFromDom({ container }) {
+    const lazyElements = Array.from(container.querySelectorAll(this._selectors.lazy));
+    const lazyElementsToInitialize = lazyElements
+      .filter(lazyElement => !lazyElement.getAttribute(this._attributes.status));
 
-    const conditionersDataFromDom = Array.from(lazyElements)
+    const conditionersDataFromDom = lazyElementsToInitialize
       .reduce((acc, element) => {
         const data = ['conditioner', 'loader']
           .reduce((updatedData, type) => {
             const attributeValue = element.getAttribute(this._attributes[type]) ||
               this._defaults[type];
 
-            const [, name, , rawParams] = attributeValue.match(paramsRegex) || [];
+            const [, name, , rawParams] = attributeValue.match(REGEX_PARAMS) || [];
             const params = rawParams ? rawParams.split(',').map(p => p.trim()) : [];
 
             updatedData[type] = { name, params };
@@ -123,13 +118,22 @@ export default class Champoo {
    * @return {Promise.<Object>}
    */
   _initLazyLoad({ element, conditioner, loader }) {
+    const invalidConditionerError = this._validateConditioner({ conditioner });
+
+    if (invalidConditionerError) {
+      this._setElementStatus({ element, status: 'error', error: invalidConditionerError });
+      return Promise.resolve({ element, error: invalidConditionerError });
+    }
+
+    this._setElementStatus({ element, status: 'init' });
+
     const initP = this._conditioners[conditioner.name]
       .check({ element, params: conditioner.params })
       .then(() => {
-        const validationError = this._validateLoader({ loader });
+        const invalidLoaderError = this._validateLoader({ loader });
 
-        if (validationError) {
-          return Promise.reject(validationError);
+        if (invalidLoaderError) {
+          return Promise.reject(invalidLoaderError);
         }
 
         return Promise.resolve();
@@ -158,11 +162,11 @@ export default class Champoo {
     const conditionerInstance = this._conditioners[conditioner.name];
 
     if (!conditionerInstance) {
-      return new Error(`Unregistered condition "${conditioner.name}"!"`);
+      return new Error(`Unregistered conditioner "${conditioner.name}"!`);
     }
 
     if (!conditionerInstance.check) {
-      return new Error(`Invalid condition "${conditioner.name}"!"`);
+      return new Error(`Invalid conditioner "${conditioner.name}"!`);
     }
 
     return null;
@@ -176,11 +180,11 @@ export default class Champoo {
     const loaderInstance = this._loaders[loader.name];
 
     if (!loaderInstance) {
-      return new Error(`Unregistered loader "${loader.name}"!"`);
+      return new Error(`Unregistered loader "${loader.name}"!`);
     }
 
     if (!loaderInstance.load) {
-      return new Error(`Invalid loader "${loader.name}"!"`);
+      return new Error(`Invalid loader "${loader.name}"!`);
     }
 
     return null;

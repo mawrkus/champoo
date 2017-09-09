@@ -24,14 +24,12 @@ export default class UrlLoader {
     }
 
     return new Promise((resolve, reject) => {
-      element.onerror = (/* event */) => {
+      element.addEventListener('error', (/* event */) => {
         const error = new Error(`Cannot load URL "${url}"!`);
         reject(error);
-      };
+      });
 
-      element.onload = (event) => {
-        resolve(event);
-      };
+      element.addEventListener('load', event => resolve(event));
 
       element.setAttribute(attribute, url);
     });

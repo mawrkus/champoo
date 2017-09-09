@@ -12,4 +12,6 @@ const champoo = new Champoo({
   }
 });
 
-champoo.init().then(console.log); // eslint-disable-line
+champoo.init().then((r) => {
+  console.log('All lazy elements loaded.', r); // eslint-disable-line
+});
