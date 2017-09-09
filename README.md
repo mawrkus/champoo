@@ -25,6 +25,8 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 <img data-lazy data-lazy-conditioner="timeout(1500)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)" />
 
 <img data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(src,https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
+
+<iframe data-lazy data-lazy-conditioner="viewport(400)" data-lazy-loader="url(https://www.google.com/logos/2010/pacman10-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0" />
 ```
 
 ```js
@@ -51,22 +53,13 @@ champoo.init();
 git clone https://github.com/mawrkus/champoo.git
 cd champoo
 npm install
-npm run demo:server
+npm run server:demo
 ```
-
-to launch automatically the demo in a browser, or:
-
-```bash
-npm run build:demo
-```
-
-then open `demo/index.html` in a browser.
-
 ## Contribute
 
 1. Fork it: `git clone https://github.com/mawrkus/champoo.git`
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
 3. Commit your changes: `git commit -am 'Added some feature'`
-4. Check the build: `yarn run build` (or `npm run build`)
+4. Check the build: `yarn run build`
 4. Push to the branch: `git push origin feature/my-new-feature`
 5. Submit a pull request :D
