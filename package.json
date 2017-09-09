@@ -26,7 +26,7 @@
     "tdd": "jest --watch --verbose",
     "lint": "eslint es demo/index.js",
     "pretest": "yarn run lint",
-    "test": "jest",
+    "test": "jest --coverage",
     "prebuild": "yarn run test",
     "build": "rm -rf lib && webpack",
     "postbuild": "uglifyjs lib/Champoo.js --compress --mangle -o lib/Champoo.min.js",
