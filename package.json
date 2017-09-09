@@ -32,7 +32,8 @@
     "postbuild": "uglifyjs lib/Champoo.js --compress --mangle -o lib/Champoo.min.js",
     "server:demo": "webpack-dev-server --open --port 3000 --config webpack.config.demo.js",
     "prebuild:demo": "yarn run lint",
-    "build:demo": "webpack --progress --colors --display-modules --display-chunks --config webpack.config.demo.js"
+    "build:demo": "webpack --progress --colors --display-modules --display-chunks --config webpack.config.demo.js",
+    "release": "yarn run build && yarn version && git push --tags && npm publish"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
