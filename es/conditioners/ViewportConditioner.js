@@ -27,6 +27,11 @@ export default class ViewportConditioner {
     if (!this._intervalId) {
       this._intervalId = window.setInterval(() => {
         this._elements = this._tryToloadElements();
+
+        if (!this._elements.length) {
+          window.clearInterval(this._intervalId);
+          this._intervalId = null;
+        }
       }, this._intervalDelay);
     }
 
