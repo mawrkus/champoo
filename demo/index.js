@@ -1,11 +1,16 @@
 import Champoo from '../es/Champoo';
 import { UrlLoader } from '../es/loaders';
-import { TimeoutConditioner, ViewportConditioner } from '../es/conditioners';
+import {
+  TimeoutConditioner,
+  ViewportConditioner,
+  MousePointerConditioner
+} from '../es/conditioners';
 
 const champoo = new Champoo({
   conditioners: {
     timeout: new TimeoutConditioner(),
-    viewport: new ViewportConditioner()
+    viewport: new ViewportConditioner(),
+    pointer: new MousePointerConditioner()
   },
   loaders: {
     url: new UrlLoader()

@@ -1,0 +1,12 @@
+body {
+  padding: 10px;
+}
+
+[data-lazy] {
+  opacity: 0;
+}
+
+[data-lazy-status="loaded"] {
+  opacity: 1;
+  transition: opacity .3s;
+}

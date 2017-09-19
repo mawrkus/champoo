@@ -25,14 +25,7 @@ export default class ViewportConditioner {
     const [distance = this._defaultDistance] = params;
 
     if (!this._intervalId) {
-      this._intervalId = window.setInterval(() => {
-        this._elements = this._tryToloadElements();
-
-        if (!this._elements.length) {
-          window.clearInterval(this._intervalId);
-          this._intervalId = null;
-        }
-      }, this._intervalDelay);
+      this._intervalId = this._initIntervalCheck();
     }
 
     return new Promise((resolve) => {
@@ -42,6 +35,20 @@ export default class ViewportConditioner {
         resolve
       });
     });
+  }
+
+  /**
+   * @return {number}
+   */
+  _initIntervalCheck() {
+    return window.setInterval(() => {
+      this._elements = this._tryToloadElements();
+
+      if (!this._elements.length) {
+        window.clearInterval(this._intervalId);
+        this._intervalId = null;
+      }
+    }, this._intervalDelay);
   }
 
   _tryToloadElements() {
