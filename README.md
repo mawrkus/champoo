@@ -25,22 +25,26 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 ```html
 <img data-lazy data-lazy-conditioner="timeout(1500)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)" />
 
-<img data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(src,https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
+<img data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
 
-<iframe data-lazy data-lazy-conditioner="viewport(400)" data-lazy-loader="url(https://www.google.com/logos/2010/pacman10-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0" />
+<iframe data-lazy data-lazy-conditioner="pointer(10,10)" data-lazy-loader="url(https://www.google.com/logos/2010/pacman10-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0" />
 
-<link rel="stylesheet" data-lazy data-lazy-conditioner="timeout(3000)" data-lazy-loader="url(href,https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css)">
+<link rel="stylesheet" data-lazy data-lazy-conditioner="timeout(3000)" data-lazy-loader="url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css, href)">
 ```
 
 ```js
 import Champoo from 'champoo';
-import { TimeoutConditioner, ViewportConditioner } from 'champoo/conditioners';
-import { UrlLoader } from 'champoo/loaders';
+import {
+  TimeoutConditioner,
+  ViewportConditioner,
+  MousePointerConditioner
+} from '../es/conditioners';
 
 const champoo = new Champoo({
   conditioners: {
     timeout: new TimeoutConditioner(),
-    viewport: new ViewportConditioner()
+    viewport: new ViewportConditioner(),
+    pointer: new MousePointerConditioner()
   },
   loaders: {
     url: new UrlLoader()
@@ -50,7 +54,7 @@ const champoo = new Champoo({
 champoo.init();
 ```
 
-### Demo
+## Demo
 
 ```bash
 git clone https://github.com/mawrkus/champoo.git
@@ -58,6 +62,89 @@ cd champoo
 npm install
 npm run server:demo
 ```
+
+## Custom conditioners creation
+
+A conditioner is a simple class having the following interface:
+
+```js
+class AmazingConditioner {
+
+  /**
+   * @param  {HtmlElement} element
+   * @param  {Array} params The conditioner parameters declared on the HTML element
+   * @return {Promise}
+   */
+  check({ element, params }) {
+    return new Promise((resolve, reject) => {
+      // call resolve() whenever the element meets the condition(s)
+      // call reject() if there's a problem
+    });
+  }
+
+}
+```
+
+By registering it when instantiating Champoo...
+
+```js
+const champoo = new Champoo({
+  conditioners: {
+    amazing: new AmazingConditioner()
+  },
+  loaders: {
+    // ...
+  }
+});
+```
+
+...you can use it in the HTML:
+
+```html
+<img data-lazy data-lazy-conditioner="amazing(1,2,3)" />
+```
+
+## Custom loaders creation
+
+A loader is a simple class having the following interface:
+
+```js
+class AmazingLoader {
+
+  /**
+   * @param  {HtmlElement} element
+   * @param  {Array} params The loader parameters declared on the HTML element
+   * @return {Promise}
+   */
+  load({ element, params }) {
+    return new Promise((resolve, reject) => {
+      // call resolve() when the element has been loaded
+      // call reject() if there's an error while loading
+    });
+  }
+
+}
+```
+
+By registering it when instantiating Champoo...
+
+```js
+const champoo = new Champoo({
+  conditioners: {
+    // ...
+  },
+  loaders: {
+    amazing: new AmazingLoader()
+  }
+});
+```
+
+...you can use it in the HTML:
+
+```html
+<img data-lazy data-lazy-loader="amazing(you,and,me)" />
+```
+
 ## Contribute
 
 1. Fork it: `git clone https://github.com/mawrkus/champoo.git`
