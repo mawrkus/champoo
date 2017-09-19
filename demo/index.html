@@ -9,20 +9,21 @@
     <meta name="robots" content="all">
     <title>🍻 Champoo demo</title>
     <script src="./bundle.js" defer></script>
-    <link rel="stylesheet" data-lazy data-lazy-conditioner="timeout(3000)" data-lazy-loader="url(href,https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css)" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <style>
-      body {
-        padding: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" data-lazy data-lazy-conditioner="timeout(1000)" data-lazy-loader="url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css, href)" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
     <h1>🍻 Champoo demo</h1>
-    <h2>Timeout image (1.5s -> css @ 3s)</h2>
-    <img data-lazy data-lazy-conditioner="timeout(1500)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)" />
-    <h2 style="margin-top:800px">Viewport with image (200px)</h2>
-    <img data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(src,https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
-    <h2 style="margin-top:800px">Viewport with iframe (400px)</h2>
-    <iframe data-lazy data-lazy-conditioner="viewport(400)" data-lazy-loader="url(https://www.google.com/logos/2010/pacman10-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0"></iframe>
+    <h2>Timeout css (1s)</h2>
+    <h2>Timeout image (2s)</h2>
+    <img data-lazy data-lazy-conditioner="timeout(2000)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
+    <h2 style="margin-top:800px">Viewport with image (100px)</h2>
+    <img data-lazy data-lazy-conditioner="viewport(100)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)" />
+    <h2 style="margin-top:400px">Viewport with iframe (200px)</h2>
+    <iframe data-lazy data-lazy-conditioner="viewport(200)" data-lazy-loader="url(https://www.google.com/logos/2010/pacman10-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0"></iframe>
+    <h2>Mouse pointer with iframe (40px - 20px)</h2>
+    <div style="border:1px dotted #333;width:567px;height:269px;">
+      <iframe style="width:487px;height:229px;margin:20px 40px;" data-lazy data-lazy-conditioner="pointer(40,20)" data-lazy-loader="url(https://www.google.com/logos/2011/henson11-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0"></iframe>
+    </div>
   </body>
 </html>
