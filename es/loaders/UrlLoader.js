@@ -16,12 +16,7 @@ export default class UrlLoader {
    * @return {Promise}
    */
   load({ element, params }) {
-    let [attribute, url] = params;
-
-    if (params.length === 1) {
-      url = attribute;
-      attribute = this._defaultAttribute;
-    }
+    const [url, attribute = this._defaultAttribute] = params;
 
     return new Promise((resolve, reject) => {
       element.addEventListener('error', (/* event */) => {
