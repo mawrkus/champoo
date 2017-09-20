@@ -34,11 +34,14 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 
 ```js
 import Champoo from 'champoo';
+
 import {
   TimeoutConditioner,
   ViewportConditioner,
   MousePointerConditioner
-} from '../es/conditioners';
+} from 'champoo/conditioners';
+
+import { UrlLoader } from 'champoo/loaders';
 
 const champoo = new Champoo({
   conditioners: {
