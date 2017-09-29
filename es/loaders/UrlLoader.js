@@ -1,5 +1,6 @@
 /**
- * URL loader: sets the attribute to the value passed as parameters.
+ * URL loader: sets the "src" attribute of an element to the URL value passed as parameter.
+ * Handles load & error events.
  */
 export default class UrlLoader {
 
@@ -12,7 +13,7 @@ export default class UrlLoader {
 
   /**
    * @param  {HtmlElement} element
-   * @param  {Array} params [attribute name, attribute value]
+   * @param  {Array} params [url, optional attribute name]
    * @return {Promise}
    */
   load({ element, params }) {

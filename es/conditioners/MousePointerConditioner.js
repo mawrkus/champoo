@@ -22,7 +22,7 @@ export default class MousePointerConditioner {
 
   /**
    * @param  {HtmlElement} element
-   * @param  {Array} params [delay in ms]
+   * @param  {Array} params [distanceX in px, distanceY in px]
    * @return {Promise}
    */
   check({ element, params }) {
@@ -84,9 +84,9 @@ export default class MousePointerConditioner {
   }
 
   /**
-  * @param  {HtmlElement} element
-  * @param  {number} distanceX
-  * @param  {number} distanceY
+   * @param  {HtmlElement} element
+   * @param  {number} distanceX
+   * @param  {number} distanceY
    * @return {Boolean}
    */
   _isElementCloseEnough({ element, distanceX, distanceY }) {

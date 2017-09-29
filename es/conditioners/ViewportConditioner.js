@@ -18,7 +18,7 @@ export default class ViewportConditioner {
 
   /**
    * @param  {HtmlElement} element
-   * @param  {Array} params [delay in ms]
+   * @param  {Array} params [distance in px]
    * @return {Promise}
    */
   check({ element, params }) {
@@ -66,8 +66,8 @@ export default class ViewportConditioner {
   }
 
   /**
-  * @param  {HtmlElement} element
-  * @param  {number} distance
+   * @param  {HtmlElement} element
+   * @param  {number} distance
    * @return {Boolean}
    */
   _isElementCloseEnough({ element, distance }) {
