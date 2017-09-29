@@ -1,10 +1,8 @@
 import Champoo from '../es/Champoo';
 import { UrlLoader } from '../es/loaders';
-import {
-  TimeoutConditioner,
-  ViewportConditioner,
-  MousePointerConditioner
-} from '../es/conditioners';
+import { TimeoutConditioner, ViewportConditioner, MousePointerConditioner } from '../es/conditioners';
+
+import FaceBookCommentsLoader from './FaceBookCommentsLoader';
 
 const champoo = new Champoo({
   conditioners: {
@@ -13,7 +11,8 @@ const champoo = new Champoo({
     pointer: new MousePointerConditioner()
   },
   loaders: {
-    url: new UrlLoader()
+    'url': new UrlLoader(),
+    'fb-comments': new FaceBookCommentsLoader()
   }
 });
 

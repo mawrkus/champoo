@@ -33,7 +33,8 @@
     "server:demo": "webpack-dev-server --open --port 3000 --config webpack.config.demo.js",
     "prebuild:demo": "yarn run lint",
     "build:demo": "webpack --progress --colors --display-modules --display-chunks --config webpack.config.demo.js",
-    "release": "yarn run build && yarn version && git push --tags && npm publish"
+    "prerelease": "yarn run build && yarn version && git push --tags",
+    "release": "npm login && npm publish"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
