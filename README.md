@@ -23,16 +23,44 @@ The package is available as a UMD module: compatible with AMD, CommonJS and expo
 ## Usage
 
 ```html
-<link rel="stylesheet" data-lazy data-lazy-conditioner="timeout(1000)" data-lazy-loader="url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css, href)" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  data-lazy data-lazy-conditioner="timeout(1000)"
+  data-lazy-loader="url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css, href)"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous"
+>
 
-<img data-lazy data-lazy-conditioner="timeout(2000)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)" />
+<img
+  data-lazy data-lazy-conditioner="timeout(2000)"
+  data-lazy-loader="url(https://www.google.com/logos/doodles/2017/mountain-day-2017-5742983679836160-2x.jpg)"
+/>
 
-<img data-lazy data-lazy-conditioner="viewport(100)" data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)" />
+<img
+  data-lazy data-lazy-conditioner="viewport(100)"
+  data-lazy-loader="url(https://www.google.com/logos/doodles/2017/sir-john-cornforths-100th-birthday-4995374627422208.2-2x.jpg)"
+/>
 
-<iframe data-lazy data-lazy-conditioner="pointer(40,20)" data-lazy-loader="url(https://www.google.com/logos/2011/henson11-hp.html)" scrolling="no" width="900px" height="304px" frameborder="0"></iframe>
+<iframe
+  data-lazy data-lazy-conditioner="pointer(40,20)"
+  data-lazy-loader="url(https://www.google.com/logos/2011/henson11-hp.html)"
+  scrolling="no"
+  width="900px"
+  height="304px"
+  frameborder="0"
+/>
 
-<div id="fb-root" data-lazy data-lazy-conditioner="viewport(100)" data-lazy-loader="fb-comments(en_US)" />
-<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="1" />
+<div
+  id="fb-root"
+  data-lazy data-lazy-conditioner="viewport(100)"
+  data-lazy-loader="fb-comments(en_US)"
+/>
+
+<div
+  class="fb-comments"
+  data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+  data-numposts="1"
+/>
 ```
 
 ```js
